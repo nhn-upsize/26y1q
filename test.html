@@ -1,60 +1,213 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Test Page - 26y1q</title>
-  <style>
-    :root { color-scheme: light dark; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", sans-serif;
-      max-width: 720px;
-      margin: 48px auto;
-      padding: 0 24px;
-      line-height: 1.6;
-    }
-    h1 { margin-bottom: 4px; }
-    .meta { color: #888; font-size: 14px; margin-bottom: 32px; }
-    .box {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 16px 0;
-      background: #fafafa;
-    }
-    @media (prefers-color-scheme: dark) {
-      .box { background: #1e1e1e; border-color: #333; }
-    }
-    code { background: #eee; padding: 2px 6px; border-radius: 4px; }
-    @media (prefers-color-scheme: dark) {
-      code { background: #333; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>일본 모바일게임 시장 보고</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap');
+:root{--bg:#f8fafc;--white:#fff;--text:#1e293b;--sub:#475569;--muted:#94a3b8;--line:#e2e8f0;--blue:#2563eb;--green:#059669;--red:#dc2626;--purple:#7c3aed;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);}
+.ct{max-width:900px;margin:0 auto;padding:40px 24px 60px;}
+
+/* 표지 */
+.cover{background:linear-gradient(135deg,#1e293b,#0f172a);color:#fff;border-radius:20px;padding:48px 36px;margin-bottom:32px;text-align:center;}
+.cover h1{font-size:1.8rem;font-weight:800;margin-bottom:8px;}
+.cover h1 span{color:#60a5fa;}
+.cover .cover-sub{font-size:.85rem;color:#94a3b8;margin-bottom:6px;}
+.cover .cover-date{font-size:.72rem;color:#64748b;}
+
+/* 목차 */
+.toc{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:22px 28px;margin-bottom:28px;}
+.toc h3{font-size:.95rem;font-weight:700;margin-bottom:14px;color:var(--blue);}
+.toc-item{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;transition:.15s;}
+.toc-item:hover{background:var(--bg);border-radius:6px;padding-left:8px;}
+.toc-num{width:24px;height:24px;border-radius:6px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;flex-shrink:0;}
+.toc-title{font-size:.8rem;font-weight:600;color:var(--text);}
+.toc-desc{font-size:.68rem;color:var(--muted);}
+
+/* 섹션 */
+.sec{background:var(--white);border:1px solid var(--line);border-radius:14px;margin-bottom:16px;overflow:hidden;}
+.sh{display:flex;align-items:center;gap:12px;padding:16px 22px;cursor:pointer;user-select:none;}
+.sh:hover{background:var(--bg);}
+.sn{width:30px;height:30px;border-radius:8px;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;}
+.st{flex:1;font-size:.88rem;font-weight:700;line-height:1.4;}
+.sa{font-size:.7rem;color:var(--muted);transition:.3s;}
+.sa.open{transform:rotate(180deg);}
+.sb{display:none;padding:0 22px 22px;font-size:.8rem;line-height:1.9;color:var(--sub);}
+.sb.show{display:block;}
+
+/* 카드 */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0;}
+@media(max-width:700px){.cards{grid-template-columns:1fr;}}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;}
+.card h4{font-size:.82rem;font-weight:700;margin-bottom:6px;color:var(--text);}
+.card p{font-size:.74rem;color:var(--sub);line-height:1.6;}
+.card .highlight{font-size:1.2rem;font-weight:800;color:var(--blue);margin:4px 0;}
+
+/* 타임라인 */
+.timeline{position:relative;padding-left:24px;margin:14px 0;}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--line);}
+.tl-item{position:relative;padding:8px 0 8px 16px;border-bottom:1px solid #f1f5f9;}
+.tl-item::before{content:'';position:absolute;left:-20px;top:14px;width:10px;height:10px;border-radius:50%;background:var(--blue);}
+.tl-title{font-size:.78rem;font-weight:700;color:var(--text);}
+.tl-desc{font-size:.72rem;color:var(--sub);margin-top:2px;}
+
+/* 게임 리스트 */
+.game-list{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.game-tag{background:#eff6ff;color:var(--blue);padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:600;}
+
+/* 키포인트 */
+.kp{display:flex;gap:8px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #f1f5f9;}
+.kp-icon{width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0;color:#fff;}
+.kp-text{font-size:.76rem;line-height:1.5;}
+.kp-text b{color:var(--text);}
+
+.note{font-size:.72rem;color:var(--muted);margin-top:10px;padding:8px 12px;background:#f8fafc;border:1px solid var(--line);border-radius:6px;line-height:1.6;}
+
+/* 결론 */
+.concl{background:linear-gradient(135deg,#1e293b,#334155);color:#fff;border-radius:16px;padding:28px 32px;margin-bottom:16px;}
+.concl h3{font-size:1rem;font-weight:800;margin-bottom:12px;color:#60a5fa;}
+.concl p{font-size:.82rem;line-height:1.7;color:#cbd5e1;margin-bottom:12px;}
+.concl-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px;}
+@media(max-width:700px){.concl-cards{grid-template-columns:1fr;}}
+.concl-card{background:rgba(255,255,255,.07);border-radius:10px;padding:14px 16px;}
+.concl-card .cc-num{font-size:.65rem;color:#60a5fa;font-weight:800;}
+.concl-card h4{font-size:.82rem;font-weight:700;color:#fff;margin:4px 0;}
+.concl-card p{font-size:.7rem;color:#94a3b8;margin:0;}
+</style>
 </head>
 <body>
-  <h1>Test Page</h1>
-  <div class="meta">GitHub Pages 배포 테스트 · <span id="now"></span></div>
+<div class="ct">
 
-  <div class="box">
-    <strong>이 페이지가 보이면:</strong>
-    <ul>
-      <li>저장소 <code>nhn-upsize/26y1q</code>에 파일이 푸시됨</li>
-      <li>GitHub Pages 빌드가 성공함</li>
-      <li>URL: <code>https://nhn-upsize.github.io/26y1q/test.html</code></li>
-    </ul>
+<!-- 표지 -->
+<div class="cover">
+  <h1><span>일본</span> 모바일게임 시장</h1>
+  <div class="cover-sub">변화 및 특징에 대한 보고</div>
+  <div class="cover-sub">피쳐폰에서 스마트폰, 그리고 글로벌 경쟁 시대로의 변천사</div>
+  <div class="cover-date">2026. 04. 22</div>
+</div>
+
+<!-- 1세대 -->
+<div class="sec"><div class="sh" onclick="toggle(1)"><div class="sn" style="background:#6366f1;">01</div><div><div class="st">1세대: 피쳐폰 SNS 게임 시대 (2008~2012)</div><div style="font-size:.7rem;color:var(--muted);margin-top:2px;">DeNA, GREE 중심의 소셜 브라우저 게임과 가챠 시스템의 탄생</div></div><span class="sa" id="a1">▼</span></div>
+<div class="sb" id="b1">
+<div class="cards">
+  <div class="card"><h4>시장 구조의 변화</h4><p>이동통신사 중심의 폐쇄적 시장에서 <b>DeNA(모바게), GREE</b> 등 소셜 플랫폼 기반 웹 브라우저 게임으로 시장이 재편</p></div>
+  <div class="card"><h4>핵심 특징</h4><p>초기 시장은 게임사가 아닌 <b>웹 개발사(SAP)</b>들이 주도<br>"SNS + 게임 + 가챠"라는 일본 특유의 모바일 게임 틀 구축<br>가챠 시스템이 핵심 BM으로 고착화</p></div>
+</div>
+<h4 style="font-size:.82rem;font-weight:700;margin:14px 0 8px;">대표 타이틀</h4>
+<div class="game-list">
+  <span class="game-tag">괴도로얄 (DeNA)</span>
+  <span class="game-tag">쯔리스타 (GREE)</span>
+  <span class="game-tag">신격의 바하무트 (Cygames)</span>
+  <span class="game-tag">드래곤 콜렉션 (KONAMI)</span>
+</div>
+<div class="note">2012년 <b>컴플리트 가챠 규제</b> 시행 — 과도한 사행성 유도로 인한 경품표시법 위반 판결. 시장 정화의 계기 마련.</div>
+</div></div>
+
+<!-- 2세대 -->
+<div class="sec"><div class="sh" onclick="toggle(2)"><div class="sn" style="background:#8b5cf6;">02</div><div><div class="st">2세대: 스마트폰 게임 시장의 개막 (2012~2016)</div><div style="font-size:.7rem;color:var(--muted);margin-top:2px;">네이티브 앱, 터치 인터페이스, IP 게임의 시작</div></div><span class="sa" id="a2">▼</span></div>
+<div class="sb" id="b2">
+<div class="cards">
+  <div class="card"><h4>기술적 전환</h4><p>단순 웹 브라우저 게임에서 화려한 연출과 액션성을 갖춘 <b>네이티브 앱 게임</b>으로 트렌드 이동</p></div>
+  <div class="card"><h4>독창적 인터페이스</h4><p>퍼즐앤드래곤의 <b>드래그</b>, 몬스터스트라이크의 <b>슬링샷</b> 등 터치 기반 조작의 표준 제시</p></div>
+</div>
+<div class="cards">
+  <div class="card"><h4>그래픽의 진화</h4><p>웹에서 불가능했던 <b>고퀄리티 3D 그래픽</b> 및 연출 구현</p></div>
+  <div class="card"><h4>IP 게임의 시작</h4><p>드래곤볼, 슈퍼마리오 등 대형 IP를 활용한 <b>팬덤 이코노미</b> 형성</p></div>
+</div>
+<div class="kp"><div class="kp-icon" style="background:var(--purple);"></div><div class="kp-text"><b>자율 규제 마련</b>: 천장 시스템(확정 지급) 및 확률 공개 도입으로 BM의 정교화</div></div>
+<div class="kp"><div class="kp-icon" style="background:var(--green);"></div><div class="kp-text"><b>라이브 서비스</b>: 기간 한정 가챠와 대규모 이벤트를 순환시키는 운영 모델 정착</div></div>
+<h4 style="font-size:.82rem;font-weight:700;margin:14px 0 8px;">대표 타이틀</h4>
+<div class="game-list">
+  <span class="game-tag">퍼즐앤드래곤 (2012, 겅호)</span>
+  <span class="game-tag">몬스터스트라이크 (2013, 믹시)</span>
+  <span class="game-tag">페이트/그랜드 오더 (2015, 딜라이트웍스)</span>
+  <span class="game-tag">드래곤볼 도칸배틀 (2015, 반다이남코)</span>
+</div>
+</div></div>
+
+<!-- 3세대 -->
+<div class="sec"><div class="sh" onclick="toggle(3)"><div class="sn" style="background:#ec4899;">03</div><div><div class="st">3세대: 고사양화 및 글로벌 경쟁 시대 (2017~현재)</div><div style="font-size:.7rem;color:var(--muted);margin-top:2px;">원신 이후의 콘솔급 퀄리티, 해외 기업의 침공, 서브컬처 주류화</div></div><span class="sa" id="a3">▼</span></div>
+<div class="sb" id="b3">
+<div class="cards">
+  <div class="card"><h4>콘솔급 고사양화 & 크로스 플랫폼</h4><p>호요버스의 '원신' 이후 유저 눈높이가 콘솔 수준으로 상승. <b>모바일·PC·콘솔 동시 지원</b>이 필수화.</p>
+  <div class="game-list" style="margin-top:8px;"><span class="game-tag">원신</span><span class="game-tag">붕괴: 스타레일</span><span class="game-tag">SD건담 G제네레이션</span></div></div>
+  <div class="card"><h4>갈라파고스 붕괴와 해외 기업의 침공</h4><p>중국·한국 등 해외 업체들이 기술력과 자본으로 <b>일본 시장 상위권 장악</b>. 특히 중국발 4X 장르 강세.</p>
+  <div class="game-list" style="margin-top:8px;"><span class="game-tag">벽람항로 (요스타)</span><span class="game-tag">니케 (시프트업)</span><span class="game-tag">드래곤퀘스트 워크</span></div></div>
+</div>
+<div class="card" style="margin-top:12px;"><h4>서브컬처의 주류화 & 슈퍼 IP 고도화</h4><p>소수 취향이었던 미소녀·이세계 장르가 <b>메인스트림</b>으로 안착. 기존 유명 IP들이 모바일 환경에 맞춰 재해석되며 메가 히트 기록.</p>
+<div class="game-list" style="margin-top:8px;"><span class="game-tag">우마무스메 (Cygames)</span><span class="game-tag">학원 아이돌마스터 (반다이남코)</span><span class="game-tag">포켓몬 카드게임 포켓</span></div></div>
+</div></div>
+
+<!-- 특징1 -->
+<div class="sec"><div class="sh" onclick="toggle(4)"><div class="sn" style="background:#f59e0b;">04</div><div><div class="st">일본 시장의 핵심 특징 (1): 느린 트렌드 변화와 압도적 ARPU</div><div style="font-size:.7rem;color:var(--muted);margin-top:2px;">느리지만 단단한 변화, 글로벌 평균 3~4배의 결제액</div></div><span class="sa" id="a4">▼</span></div>
+<div class="sb" id="b4">
+<div class="cards">
+  <div class="card">
+    <h4>느리지만 단단한 트렌드 변화</h4>
+    <p>일본 유저들은 신작으로의 이동이 매우 느리며, 하나의 게임에 정착하면 <b>수년간 충성도를 유지</b></p>
+    <div class="kp" style="margin-top:8px;border:none;"><div class="kp-icon" style="background:#f59e0b;"></div><div class="kp-text"><b>장기 서비스 강세</b>: 퍼즐앤드래곤, 몬스터스트라이크 등 10년 이상 서비스 중인 타이틀이 여전히 상위권</div></div>
+    <div class="kp" style="border:none;"><div class="kp-icon" style="background:#f59e0b;"></div><div class="kp-text"><b>낮은 이탈률</b>: 자신이 쌓아온 데이터와 커뮤니티를 중시, 신규 게임 진입장벽 높음</div></div>
   </div>
-
-  <div class="box">
-    <strong>다음 단계</strong>
-    <ol>
-      <li>팀원을 Collaborator로 초대 (Write 권한)</li>
-      <li>팀원 PC에 <code>gh auth login</code></li>
-      <li>Claude Code로 수정/배포</li>
-    </ol>
+  <div class="card">
+    <h4>압도적인 ARPU (1인당 평균 결제액)</h4>
+    <p>다운로드 수는 타 국가 대비 적을 수 있으나, 유저당 결제 금액은 <b>세계 최고 수준</b></p>
+    <div class="highlight">글로벌 평균 대비 3~4배</div>
+    <div class="kp" style="border:none;"><div class="kp-icon" style="background:var(--green);"></div><div class="kp-text"><b>결제에 대한 관대함</b>: 가챠를 단순 도박이 아닌 캐릭터에 대한 <b>애정 표현</b>이나 굿즈 구매로 인식</div></div>
   </div>
+</div>
+</div></div>
 
-  <script>
-    document.getElementById('now').textContent = new Date().toLocaleString('ko-KR');
-  </script>
+<!-- 특징2 -->
+<div class="sec"><div class="sh" onclick="toggle(5)"><div class="sn" style="background:#10b981;">05</div><div><div class="st">일본 시장의 핵심 특징 (2): IP 중심 생태계와 솔로 플레이 문화</div><div style="font-size:.7rem;color:var(--muted);margin-top:2px;">제작위원회 시스템, 미디어믹스, 캐릭터 중심 서사</div></div><span class="sa" id="a5">▼</span></div>
+<div class="sb" id="b5">
+<div class="cards">
+  <div class="card"><h4>IP 중심의 생태계</h4>
+    <p>강력한 IP는 일본 시장의 근본적 동력. 단순 게임을 넘어 <b>거대한 미디어믹스 생태계</b> 형성.</p>
+    <div class="kp" style="border:none;margin-top:8px;"><div class="kp-icon" style="background:#10b981;"></div><div class="kp-text"><b>제작위원회 시스템</b>: 원작 재현도와 퀄리티를 철저히 감수하여 IP 가치 보존, 팬 신뢰 유지</div></div>
+    <div class="kp" style="border:none;"><div class="kp-icon" style="background:#10b981;"></div><div class="kp-text"><b>입체적 팬덤</b>: 게임→애니→굿즈→오프라인 이벤트 순환 구조로 유저 일상에 깊이 침투</div></div>
+  </div>
+  <div class="card"><h4>솔로 플레이와 내러티브</h4>
+    <p>글로벌이 경쟁·협동을 중시하는 반면, 일본은 유저 개인과 캐릭터 간의 <b>관계 및 서사</b>를 중시.</p>
+    <div class="kp" style="border:none;margin-top:8px;"><div class="kp-icon" style="background:var(--purple);"></div><div class="kp-text"><b>풍부한 시나리오</b>: 퍼즐 게임이라도 깊이 있는 세계관, 캐릭터 보이스, 스토리텔링 필수</div></div>
+    <div class="kp" style="border:none;"><div class="kp-icon" style="background:var(--purple);"></div><div class="kp-text"><b>비동기식 멀티</b>: 실시간 경쟁 스트레스보다 친구 캐릭터를 빌려 쓰는 '느슨한 연대' 선호</div></div>
+  </div>
+</div>
+</div></div>
+
+<!-- 유저 성향 -->
+<div class="sec"><div class="sh" onclick="toggle(6)"><div class="sn" style="background:#ef4444;">06</div><div><div class="st">유저 성향 및 플레이 문화: 세로 화면, 통근, 시즈널 이벤트</div><div style="font-size:.7rem;color:var(--muted);margin-top:2px;">세로 화면, 통근 문화, 시즈널 이벤트와 컬처라이징</div></div><span class="sa" id="a6">▼</span></div>
+<div class="sb" id="b6">
+<div class="cards">
+  <div class="card"><h4>세로 화면과 통근 지하철 문화</h4>
+    <p><b>한 손 플레이 지향</b>: 출퇴근 시 손잡이를 잡고 한 손으로 플레이하는 문화 → 세로형 화면 선호</p>
+    <p style="margin-top:6px;"><b>짧은 호흡의 스테이지</b>: 지하철 한 정거장(약 2~3분) 내 완료할 수 있는 설계</p>
+    <div class="note">※ 일본 모바일 게임의 약 70% 이상이 세로형 UI를 채택하거나 최적화된 모드를 제공</div>
+  </div>
+  <div class="card"><h4>시즈널 이벤트 및 컬처라이징 운영</h4>
+    <p><b>일상과 게임의 연결</b>: 하나미(벚꽃), 골든위크, 오봉야스미 등 실제 절기에 맞춘 대규모 인게임 이벤트</p>
+    <p style="margin-top:6px;"><b>정교한 현지화</b>: 단순 번역을 넘어 정서·예절·금기 사항을 고려한 세밀한 운영(컬처라이징) 필수</p>
+    <div class="note">※ 시즈널 이벤트 기간의 매출 비중이 연간 전체 매출의 상당 부분을 차지하는 구조</div>
+  </div>
+</div>
+</div></div>
+
+<!-- 결론 -->
+<div class="concl">
+  <h3>결론 및 시사점: "밀도의 시장"</h3>
+  <p>일본은 전 세계에서 가장 독창적이고 폐쇄적이지만, 안착 시 가장 강력한 방어기제와 수익성을 보장하는 시장입니다. 속도보다는 유저와의 깊은 관계 형성이 성패를 좌우합니다.</p>
+  <div class="concl-cards">
+    <div class="concl-card"><div class="cc-num">01</div><h4>철저한 현지화 (컬처라이징)</h4><p>단순 번역을 넘어 일본 유저의 정서, 생활 패턴, 시즈널리티에 맞춘 세밀한 운영과 콘텐츠 현지화가 필수적</p></div>
+    <div class="concl-card"><div class="cc-num">02</div><h4>IP 및 서사 경쟁력 확보</h4><p>강력한 IP 활용 또는 유저가 몰입할 수 있는 깊이 있는 세계관과 시나리오를 통해 팬덤 형성이 핵심</p></div>
+    <div class="concl-card"><div class="cc-num">03</div><h4>장기 라이브 운영 역량</h4><p>단기 매출보다는 유저와의 신뢰를 바탕으로 한 장기적 서비스 운영 능력이 시장 안착의 결정적 요인</p></div>
+  </div>
+</div>
+
+</div>
+<script>
+function toggle(n){document.getElementById('b'+n).classList.toggle('show');document.getElementById('a'+n).classList.toggle('open');}
+</script>
 </body>
 </html>
