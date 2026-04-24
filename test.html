@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test Page - 26y1q</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", sans-serif;
+      max-width: 720px;
+      margin: 48px auto;
+      padding: 0 24px;
+      line-height: 1.6;
+    }
+    h1 { margin-bottom: 4px; }
+    .meta { color: #888; font-size: 14px; margin-bottom: 32px; }
+    .box {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 16px 0;
+      background: #fafafa;
+    }
+    @media (prefers-color-scheme: dark) {
+      .box { background: #1e1e1e; border-color: #333; }
+    }
+    code { background: #eee; padding: 2px 6px; border-radius: 4px; }
+    @media (prefers-color-scheme: dark) {
+      code { background: #333; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Test Page</h1>
+  <div class="meta">GitHub Pages 배포 테스트 · <span id="now"></span></div>
+
+  <div class="box">
+    <strong>이 페이지가 보이면:</strong>
+    <ul>
+      <li>저장소 <code>nhn-upsize/26y1q</code>에 파일이 푸시됨</li>
+      <li>GitHub Pages 빌드가 성공함</li>
+      <li>URL: <code>https://nhn-upsize.github.io/26y1q/test.html</code></li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <strong>다음 단계</strong>
+    <ol>
+      <li>팀원을 Collaborator로 초대 (Write 권한)</li>
+      <li>팀원 PC에 <code>gh auth login</code></li>
+      <li>Claude Code로 수정/배포</li>
+    </ol>
+  </div>
+
+  <script>
+    document.getElementById('now').textContent = new Date().toLocaleString('ko-KR');
+  </script>
+</body>
+</html>
