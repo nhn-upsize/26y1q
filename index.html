@@ -90,8 +90,23 @@
   /* smooth scroll */
   html { scroll-behavior: smooth; }
 </style>
+<style>
+  /* 상단 페이지 탭 */
+  .page-nav-bar { position: sticky; top: 0; z-index: 9999; margin: -40px -20px 24px -20px; padding: 10px 20px; background: #0f172a; display: flex; gap: 6px; box-shadow: 0 2px 12px rgba(0,0,0,0.18); }
+  .page-tab { padding: 10px 24px; background: rgba(255,255,255,0.08); color: #cbd5e1; border: 0; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.18s; font-family: 'Noto Sans KR', sans-serif; }
+  .page-tab:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  .page-tab.active { background: #0085ca; color: #fff; box-shadow: 0 2px 8px rgba(0,133,202,0.4); }
+  .page-content { display: none; }
+  .page-content.active { display: block; }
+  .page-iframe { width: 100%; height: calc(100vh - 80px); border: 0; border-radius: 12px; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+</style>
 </head>
 <body>
+<div class="page-nav-bar">
+  <button class="page-tab active" data-target="tab-report">📊 2026 1Q 시장 리포트</button>
+  <button class="page-tab" data-target="tab-test">🧪 테스트</button>
+</div>
+<div id="tab-report" class="page-content active">
 <div class="container">
   <div class="header">
     <h1>📊 모바일게임 시장 변화 조사 (22년부터 TOP100 기준)</h1>
@@ -2005,5 +2020,22 @@
     총 22개 핵심 인사이트 (KR 8 · JP 4 · US 4 · 공통 2 · 전략 4) · 기준일 2026-04-22
   </div>
 </div>
+</div><!-- /tab-report -->
+
+<div id="tab-test" class="page-content">
+  <iframe class="page-iframe" src="https://nhn-upsize.github.io/26y1q/test.html" title="테스트 페이지"></iframe>
+</div>
+
+<script>
+  document.querySelectorAll('.page-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.target;
+      document.querySelectorAll('.page-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.page-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(target).classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
