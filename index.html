@@ -98,7 +98,7 @@
     border-radius: 14px;
     padding: 6px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 4px;
     box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
     border: 1px solid #e2e8f0;
@@ -147,21 +147,25 @@
 <body>
 <div class="page-nav-wrap">
   <div class="page-nav-bar">
-    <button class="page-tab active" data-target="tab-report">
+    <button class="page-tab active" data-target="tab-dart">
+      <span class="tab-icon">📑</span>
+      <span>국내 게임사 공시분석</span>
+    </button>
+    <button class="page-tab" data-target="tab-report">
       <span class="tab-icon">📊</span>
       <span>모바일게임 시장 변화 조사<br>(22년부터 TOP100 기준)</span>
     </button>
     <button class="page-tab" data-target="tab-test-1">
       <span class="tab-icon">🇯🇵</span>
-      <span>일본 모바일게임 시장 보고</span>
+      <span>일본 모바일게임 시장<br>(주요 특징)</span>
     </button>
-    <button class="page-tab" data-target="tab-dart">
-      <span class="tab-icon">📑</span>
-      <span>국내 게임사 공시분석</span>
+    <button class="page-tab" data-target="tab-jp-trend">
+      <span class="tab-icon">🇯🇵</span>
+      <span>일본 모바일게임 시장<br>(IP 및 사업구조) : 진행중</span>
     </button>
   </div>
 </div>
-<div id="tab-report" class="page-content active">
+<div id="tab-report" class="page-content">
 <div class="container">
   <div class="header">
     <h1>📊 모바일게임 시장 변화 조사 (22년부터 TOP100 기준)</h1>
@@ -2232,12 +2236,21 @@
   </div>
 </div>
 
-<div id="tab-dart" class="page-content">
+<div id="tab-dart" class="page-content active">
   <div class="iframe-wrap">
     <div class="iframe-header">
       🔗 임베디드 페이지: <code>https://vonkim.github.io/dart-report-24/</code>
     </div>
     <iframe class="page-iframe" src="https://vonkim.github.io/dart-report-24/" title="국내 게임사 공시분석"></iframe>
+  </div>
+</div>
+
+<div id="tab-jp-trend" class="page-content">
+  <div class="iframe-wrap">
+    <div class="iframe-header">
+      🔗 임베디드 페이지: <code>https://vonkim.github.io/jp-trend/</code>
+    </div>
+    <iframe class="page-iframe" src="https://vonkim.github.io/jp-trend/" title="일본 모바일게임 시장 (IP 및 사업구조) : 진행중"></iframe>
   </div>
 </div>
 
