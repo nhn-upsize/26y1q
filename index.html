@@ -98,7 +98,7 @@
     border-radius: 14px;
     padding: 6px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
     gap: 4px;
     box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
     border: 1px solid #e2e8f0;
@@ -144,11 +144,15 @@
   <div class="page-nav-bar">
     <button class="page-tab active" data-target="tab-report">
       <span class="tab-icon">📊</span>
-      <span>2026 1Q 시장 리포트</span>
+      <span>모바일게임 시장 변화 조사 (22년부터 TOP100 기준)</span>
     </button>
-    <button class="page-tab" data-target="tab-test">
+    <button class="page-tab" data-target="tab-test-1">
       <span class="tab-icon">🧪</span>
-      <span>테스트</span>
+      <span>테스트 1</span>
+    </button>
+    <button class="page-tab" data-target="tab-test-2">
+      <span class="tab-icon">🧪</span>
+      <span>테스트 2</span>
     </button>
   </div>
 </div>
@@ -2068,12 +2072,21 @@
 </div>
 </div><!-- /tab-report -->
 
-<div id="tab-test" class="page-content">
+<div id="tab-test-1" class="page-content">
   <div class="iframe-wrap">
     <div class="iframe-header">
       🔗 임베디드 페이지: <code>https://nhn-upsize.github.io/26y1q/test.html</code>
     </div>
-    <iframe class="page-iframe" src="https://nhn-upsize.github.io/26y1q/test.html" title="테스트 페이지"></iframe>
+    <iframe class="page-iframe" src="https://nhn-upsize.github.io/26y1q/test.html" title="테스트 1"></iframe>
+  </div>
+</div>
+
+<div id="tab-test-2" class="page-content">
+  <div class="iframe-wrap">
+    <div class="iframe-header">
+      🔗 임베디드 페이지: <code>https://nhn-upsize.github.io/26y1q/test.html</code>
+    </div>
+    <iframe class="page-iframe" src="https://nhn-upsize.github.io/26y1q/test.html" title="테스트 2"></iframe>
   </div>
 </div>
 
