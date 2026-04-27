@@ -2236,7 +2236,7 @@
     <div class="iframe-header">
       🔗 임베디드 페이지: <code>https://nhn-upsize.github.io/26y1q/test.html</code>
     </div>
-    <iframe class="page-iframe" data-src="https://nhn-upsize.github.io/26y1q/test.html" src="about:blank" title="일본 모바일게임 시장 보고"></iframe>
+    <iframe class="page-iframe" src="https://nhn-upsize.github.io/26y1q/test.html" title="일본 모바일게임 시장 보고"></iframe>
   </div>
 </div>
 
@@ -2254,7 +2254,7 @@
     <div class="iframe-header">
       🔗 임베디드 페이지: <code>https://vonkim.github.io/jp-report/</code>
     </div>
-    <iframe class="page-iframe" data-src="https://vonkim.github.io/jp-report/" src="about:blank" title="Appendix. 일본 모바일게임 시장 주요 게임 장르"></iframe>
+    <iframe class="page-iframe" src="https://vonkim.github.io/jp-report/" title="Appendix. 일본 모바일게임 시장 주요 게임 장르"></iframe>
   </div>
 </div>
 
@@ -2263,7 +2263,7 @@
     <div class="iframe-header">
       🔗 임베디드 페이지: <code>https://vonkim.github.io/jp-trend/</code>
     </div>
-    <iframe class="page-iframe" data-src="https://vonkim.github.io/jp-trend/" src="about:blank" title="일본 모바일게임 시장 (IP 및 사업구조) : 진행중"></iframe>
+    <iframe class="page-iframe" src="https://vonkim.github.io/jp-trend/" title="일본 모바일게임 시장 (IP 및 사업구조) : 진행중"></iframe>
   </div>
 </div>
 
@@ -2274,12 +2274,7 @@
       document.querySelectorAll('.page-tab').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.page-content').forEach(c => c.classList.remove('active'));
       btn.classList.add('active');
-      const panel = document.getElementById(target);
-      panel.classList.add('active');
-      const iframe = panel.querySelector('iframe[data-src]');
-      if (iframe && iframe.src === 'about:blank') {
-        iframe.src = iframe.dataset.src;
-      }
+      document.getElementById(target).classList.add('active');
     });
   });
 </script>
