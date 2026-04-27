@@ -98,7 +98,7 @@
     border-radius: 14px;
     padding: 6px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 4px;
     box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
     border: 1px solid #e2e8f0;
@@ -110,7 +110,7 @@
     color: #64748b;
     border: 0;
     border-radius: 10px;
-    font-size: 11.5px;
+    font-size: 10.5px;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -149,7 +149,11 @@
   <div class="page-nav-bar">
     <button class="page-tab active" data-target="tab-dart">
       <span class="tab-icon">📑</span>
-      <span>국내 게임사 공시분석</span>
+      <span>국내 게임사<br>공시분석</span>
+    </button>
+    <button class="page-tab" data-target="tab-jp-genre">
+      <span class="tab-icon">🎮</span>
+      <span>Appendix. 일본 모바일게임 시장<br>주요 게임 장르</span>
     </button>
     <button class="page-tab" data-target="tab-report">
       <span class="tab-icon">📊</span>
@@ -2242,6 +2246,15 @@
       🔗 임베디드 페이지: <code>https://vonkim.github.io/dart-report-24/</code>
     </div>
     <iframe class="page-iframe" src="https://vonkim.github.io/dart-report-24/" title="국내 게임사 공시분석"></iframe>
+  </div>
+</div>
+
+<div id="tab-jp-genre" class="page-content">
+  <div class="iframe-wrap">
+    <div class="iframe-header">
+      🔗 임베디드 페이지: <code>https://vonkim.github.io/jp-report/</code>
+    </div>
+    <iframe class="page-iframe" src="https://vonkim.github.io/jp-report/" title="Appendix. 일본 모바일게임 시장 주요 게임 장르"></iframe>
   </div>
 </div>
 
